@@ -46,15 +46,24 @@
             bindings = <&bootloader>;
             key-positions = <0 4 5 9>;
         };
+
+        crtl {
+            bindings = <&kp LCTRL>;
+            key-positions = <37 36>;
+        };
+
+        cmd {
+            bindings = <&kp LEFT_GUI>;
+            key-positions = <37 32>;
+        };
     };
 
     macros {
-        NavWordLeft: NavWordLeft {
+        sort_as: sort_as {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none>, <&macro_press>, <&kp LC(LEFT)>;
-
-            label = "NAVWORDLEFT";
+            bindings = <&kp LG(DOWN) &kp LS(LG(L)) &kp LS(LA(O))>;
+            label = "SORT_AS";
         };
     };
 
@@ -106,10 +115,10 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-       &kp HOME   &kp RC(LEFT_ARROW)  &kp UP     &kp LC(RIGHT_ARROW)  &kp END       &kp KP_DOT  &kp KP_N7  &kp KP_N8        &kp KP_N9  &none
-       &kp RC(D)  &kp LEFT            &kp DOWN   &kp RIGHT            &kp LSHIFT    &kp RSHIFT  &kp KP_N4  &kp KP_N5        &kp KP_N6  &none
-&none  &kp F2     &kp RC(Z)           &kp LC(C)  &kp LC(V)            &kp LCTRL     &kp RCTRL   &kp KP_N1  &kp KP_N2        &kp KP_N3  &none  &none
-                                      &none      &none                &trans        &trans      &kp ENTER  &kp KP_NUMBER_0
+       &kp HOME   &kp RC(LEFT_ARROW)  &kp UP         &kp LC(RIGHT_ARROW)  &kp END       &kp KP_DOT  &kp KP_N7  &kp KP_N8        &kp KP_N9  &kp PLUS
+       &kp RC(D)  &kp LEFT            &kp DOWN       &kp RIGHT            &kp LSHIFT    &kp RSHIFT  &kp KP_N4  &kp KP_N5        &kp KP_N6  &kp EQUAL
+&none  &kp F2     &kp RC(Z)           &kp LC(C)      &kp LC(V)            &kp LCTRL     &kp RCTRL   &kp KP_N1  &kp KP_N2        &kp KP_N3  &kp MINUS  &none
+                                      &kp BACKSPACE  &kp SPACE            &trans        &trans      &kp ENTER  &kp KP_NUMBER_0
             >;
         };
 
@@ -158,9 +167,9 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &sort_as  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans  &trans  &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
